@@ -9,7 +9,7 @@ async function abnf2pikchr(abnf2pikchrWasm, src) {
 	const DARK_MODE = 0x0002;
 
 	const instancePromise = WebAssembly.instantiate(abnf2pikchrWasm);
-	const srcBytes = (new TextEncoder()).encode(src.replaceAll("\n", "\r\n"));
+	const srcBytes = (new TextEncoder()).encode(src.replaceAll("\n", "\r\n") + "\r\n");
 
 	const instance = await instancePromise;
 	const mem = instance.exports.memory;
